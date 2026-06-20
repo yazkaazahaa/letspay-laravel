@@ -1,21 +1,25 @@
 <?php
 
-// Memaksa Laravel memindahkan semua folder penulisan cache ke folder /tmp bawaan Vercel
-$storagePath = '/tmp/storage/bootstrap/cache';
-if (!is_dir($storagePath)) {
-    mkdir($storagePath, 0755, true);
+// Trik Codex: Memaksa pembuatan folder temporer secara real-time di serverless Vercel
+$paths = [
+    '/tmp/storage/bootstrap/cache',
+    '/tmp/storage/framework/sessions',
+    '/tmp/storage/framework/views',
+    '/tmp/storage/framework/cache'
+];
+
+foreach ($paths as $path) {
+    if (!is_dir($path)) {
+        mkdir($path, 0755, true);
+    }
 }
 
-putenv("VAPOR_ARTIFACT_NAME=laravel-app");
+// Override environment secara absolut agar tidak crash membaca data kosong
+putenv("APP_ENV=production");
+putenv("APP_DEBUG=true");
 putenv("VIEW_COMPILED_PATH=/tmp/storage/framework/views");
-putenv("SESSION_DRIVER=cookie");
-putenv("LOG_CHANNEL=stderr");
 putenv("CACHE_STORE=array");
+putenv("SESSION_DRIVER=cookie");
 
-// Membuat folder untuk framework views agar tidak memicu error missing directory
-if (!is_dir('/tmp/storage/framework/views')) {
-    mkdir('/tmp/storage/framework/views', 0755, true);
-}
-
-// Jalankan aplikasi Laravel standar menuju folder public
+// Jalankan file utama public Laravel
 require __DIR__ . '/../public/index.php';
