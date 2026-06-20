@@ -73,22 +73,22 @@
 
 @include('layouts.navbar')
 
-    <h1>Data Pembayaran Les Privat</h1>
+    <h1>Data Pembayaran Les </h1>
 
     <form method="GET" action="{{ route('payments.index') }}">
         <select name="bulan">
-            <option>January</option>
-            <option>February</option>
-            <option>March</option>
+            <option>Januari</option>
+            <option>Februari</option>
+            <option>Maret</option>
             <option>April</option>
-            <option>May</option>
-            <option>June</option>
-            <option>July</option>
-            <option>August</option>
+            <option>Mei</option>
+            <option>Juni</option>
+            <option>Juli</option>
+            <option>Agustus</option>
             <option>September</option>
-            <option>October</option>
+            <option>Oktober</option>
             <option>November</option>
-            <option>December</option>
+            <option>Desember</option>
         </select>
 
         <input type="number" name="tahun" value="{{ $tahun }}">
@@ -115,7 +115,7 @@
             @endforeach
         </select>
 
-        <input type="text" name="bulan" placeholder="Bulan (June)">
+        <input type="text" name="bulan" placeholder="Bulan (Juni)">
         <input type="number" name="tahun" placeholder="Tahun">
 
         <select name="status">
