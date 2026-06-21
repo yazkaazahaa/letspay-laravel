@@ -102,12 +102,6 @@
         <p style="color:green;">{{ session('success') }}</p>
     @endif
 
-    @if($databaseError)
-        <p style="color:#9f1239; background:#ffe4e6; padding:10px; border-radius:6px;">
-            {{ $databaseError }}
-        </p>
-    @endif
-
     <h3>Tambah Pembayaran</h3>
 
     <form method="POST" action="{{ route('payments.store') }}">

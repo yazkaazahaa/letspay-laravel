@@ -88,12 +88,6 @@
         </p>
     @endif
 
-    @if($databaseError)
-        <p style="color:#9f1239; background:#ffe4e6; padding:10px; border-radius:6px;">
-            {{ $databaseError }}
-        </p>
-    @endif
-
     <table border="1" cellpadding="10">
         <tr>
             <th>Nama</th>
